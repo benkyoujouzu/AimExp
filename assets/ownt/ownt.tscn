@@ -1,0 +1,370 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/ownt/ownt.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/SourceCodePro-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/ownt/Options.gd" type="Script" id=4]
+[ext_resource path="res://assets/env.tres" type="Environment" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/SourceCodePro-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="1w6ts" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 200 )
+light_energy = 0.5
+omni_range = 600.0
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100 )
+invert_faces = true
+width = 200.0
+height = 200.0
+depth = 200.0
+material = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[node name="Scoreboard" type="Control" parent="."]
+anchor_right = 0.05
+anchor_bottom = 0.07
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Scoreboard"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Scoreboard"]
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChallengeTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="Options" type="Control" parent="."]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SC" type="ScrollContainer" parent="Options"]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GC" type="GridContainer" parent="Options/SC"]
+margin_right = 921.6
+margin_bottom = 453.6
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 40
+columns = 3
+
+[node name="Stats" type="Label" parent="Options/SC/GC"]
+margin_top = 4.0
+margin_right = 210.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 3 )
+text = "Show stats"
+
+[node name="Control3" type="Control" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_right = 805.0
+margin_bottom = 40.0
+
+[node name="StatsCheckbox" type="CheckButton" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_right = 921.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="Walls" type="Label" parent="Options/SC/GC"]
+margin_top = 64.0
+margin_right = 210.0
+margin_bottom = 95.0
+custom_fonts/font = SubResource( 3 )
+text = "Show walls"
+
+[node name="Control4" type="Control" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 60.0
+margin_right = 805.0
+margin_bottom = 100.0
+
+[node name="WallsCheckbox" type="CheckButton" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 60.0
+margin_right = 921.0
+margin_bottom = 100.0
+pressed = true
+
+[node name="TS" type="Label" parent="Options/SC/GC"]
+margin_top = 120.0
+margin_right = 210.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+text = "Target size"
+
+[node name="TSSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 120.0
+margin_right = 805.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 1.0
+
+[node name="TSText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 120.0
+margin_right = 921.0
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="TN" type="Label" parent="Options/SC/GC"]
+margin_top = 171.0
+margin_right = 210.0
+margin_bottom = 202.0
+custom_fonts/font = SubResource( 3 )
+text = "Target number"
+
+[node name="TNSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 171.0
+margin_right = 805.0
+margin_bottom = 187.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 99.0
+value = 6.0
+
+[node name="TNText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 171.0
+margin_right = 921.0
+margin_bottom = 202.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="TR" type="Label" parent="Options/SC/GC"]
+margin_top = 222.0
+margin_right = 210.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 3 )
+text = "Target range"
+
+[node name="TRSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 222.0
+margin_right = 805.0
+margin_bottom = 238.0
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 0.9
+step = 0.1
+value = 0.9
+
+[node name="TRText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 222.0
+margin_right = 921.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="PD" type="Label" parent="Options/SC/GC"]
+margin_top = 273.0
+margin_right = 210.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "Player distance"
+
+[node name="PDSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 273.0
+margin_right = 805.0
+margin_bottom = 289.0
+size_flags_horizontal = 3
+min_value = 20.0
+max_value = 200.0
+value = 190.0
+
+[node name="PDText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 273.0
+margin_right = 921.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="MH" type="Label" parent="Options/SC/GC"]
+margin_top = 324.0
+margin_right = 210.0
+margin_bottom = 355.0
+custom_fonts/font = SubResource( 3 )
+text = "Map height"
+
+[node name="MHSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 324.0
+margin_right = 805.0
+margin_bottom = 340.0
+size_flags_horizontal = 3
+min_value = 60.0
+max_value = 400.0
+value = 200.0
+
+[node name="MHText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 324.0
+margin_right = 921.0
+margin_bottom = 355.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="CT" type="Label" parent="Options/SC/GC"]
+margin_top = 375.0
+margin_right = 210.0
+margin_bottom = 406.0
+custom_fonts/font = SubResource( 3 )
+text = "Challenge time"
+
+[node name="CTSlider" type="HSlider" parent="Options/SC/GC"]
+margin_left = 250.0
+margin_top = 375.0
+margin_right = 805.0
+margin_bottom = 391.0
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 1000.0
+step = 10.0
+value = 60.0
+
+[node name="CTText" type="Label" parent="Options/SC/GC"]
+margin_left = 845.0
+margin_top = 375.0
+margin_right = 921.0
+margin_bottom = 406.0
+custom_fonts/font = SubResource( 3 )
+text = "0.00"
+
+[node name="Back" type="Button" parent="Options"]
+anchor_top = 0.8
+anchor_right = 0.3
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Back to title"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Challenge" type="Button" parent="Options"]
+anchor_left = 0.3
+anchor_top = 0.8
+anchor_right = 0.7
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Challenge"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FreePlay" type="Button" parent="Options"]
+anchor_left = 0.7
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "FreePlay"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Result" type="Control" parent="."]
+visible = false
+anchor_left = 0.4
+anchor_top = 0.4
+anchor_right = 0.6
+anchor_bottom = 0.6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Result"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResultText" type="Label" parent="Result"]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.7
+custom_fonts/font = SubResource( 4 )
+text = "hit: 0 fire: 0
+acc: 0 time: 0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="Button" parent="Result"]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 4 )
+text = "Close"
+flat = true

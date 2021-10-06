@@ -1,0 +1,358 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://Crosshair.tscn" type="PackedScene" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/SourceCodePro-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = SubResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.66968
+margin_right = -2.66968
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SC" type="ScrollContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="GridContainer" parent="SC"]
+margin_right = 768.0
+margin_bottom = 648.0
+rect_pivot_offset = Vector2( -1776.77, -277.694 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sen" type="Label" parent="SC/Grid"]
+margin_right = 322.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "Sensitivity (CSGO/APEX)"
+
+[node name="SensSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_right = 672.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+max_value = 4.0
+step = 0.02
+value = 3.4
+
+[node name="SensText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_right = 768.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "0.00"
+
+[node name="FOV" type="Label" parent="SC/Grid"]
+margin_top = 51.0
+margin_right = 322.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+text = "FOV(OW)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FOVSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 51.0
+margin_right = 672.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+min_value = 70.0
+max_value = 130.0
+value = 103.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FOVText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 51.0
+margin_right = 734.0
+margin_bottom = 82.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 2 )
+text = "103"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowFPS" type="Label" parent="SC/Grid"]
+margin_top = 106.0
+margin_right = 322.0
+margin_bottom = 137.0
+custom_fonts/font = SubResource( 2 )
+text = "Show FPS"
+
+[node name="Control" type="Control" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 102.0
+margin_right = 672.0
+margin_bottom = 142.0
+
+[node name="PerfCheckbox" type="CheckButton" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 102.0
+margin_right = 768.0
+margin_bottom = 142.0
+pressed = true
+
+[node name="MS" type="Label" parent="SC/Grid"]
+margin_top = 166.0
+margin_right = 322.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 2 )
+text = "Show Mouse Speed"
+
+[node name="Control4" type="Control" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 162.0
+margin_right = 672.0
+margin_bottom = 202.0
+
+[node name="MSCheckbox" type="CheckButton" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 162.0
+margin_right = 768.0
+margin_bottom = 202.0
+pressed = true
+
+[node name="CT" type="Label" parent="SC/Grid"]
+margin_top = 222.0
+margin_right = 322.0
+margin_bottom = 253.0
+custom_fonts/font = SubResource( 2 )
+text = "Crosshair type"
+
+[node name="CTOption" type="OptionButton" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 222.0
+margin_right = 672.0
+margin_bottom = 253.0
+text = "Dot"
+items = [ "Dot", null, false, 0, null, "Crosshair", null, false, 1, null, "None", null, false, 2, null ]
+selected = 0
+
+[node name="Control5" type="Control" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 222.0
+margin_right = 768.0
+margin_bottom = 253.0
+
+[node name="CC" type="Label" parent="SC/Grid"]
+margin_top = 273.0
+margin_right = 322.0
+margin_bottom = 304.0
+custom_fonts/font = SubResource( 2 )
+text = "Crosshair color"
+
+[node name="CColor" type="ColorPickerButton" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 273.0
+margin_right = 672.0
+margin_bottom = 304.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="Control6" type="Control" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 273.0
+margin_right = 768.0
+margin_bottom = 304.0
+
+[node name="CS" type="Label" parent="SC/Grid"]
+margin_top = 324.0
+margin_right = 322.0
+margin_bottom = 355.0
+custom_fonts/font = SubResource( 2 )
+text = "Center size"
+
+[node name="CSSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 324.0
+margin_right = 672.0
+margin_bottom = 340.0
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.1
+value = 4.0
+
+[node name="CSText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 324.0
+margin_right = 768.0
+margin_bottom = 355.0
+custom_fonts/font = SubResource( 2 )
+text = "0.00"
+
+[node name="Len" type="Label" parent="SC/Grid"]
+margin_top = 375.0
+margin_right = 322.0
+margin_bottom = 406.0
+custom_fonts/font = SubResource( 2 )
+text = "Crosshair length"
+
+[node name="CLSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 375.0
+margin_right = 672.0
+margin_bottom = 391.0
+size_flags_horizontal = 3
+max_value = 10.0
+step = 0.1
+value = 4.0
+
+[node name="CLText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 375.0
+margin_right = 768.0
+margin_bottom = 406.0
+custom_fonts/font = SubResource( 2 )
+text = "0.00"
+
+[node name="T" type="Label" parent="SC/Grid"]
+margin_top = 426.0
+margin_right = 322.0
+margin_bottom = 457.0
+custom_fonts/font = SubResource( 2 )
+text = "Crosshair thickness"
+
+[node name="CTSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 426.0
+margin_right = 672.0
+margin_bottom = 442.0
+size_flags_horizontal = 3
+max_value = 5.0
+step = 0.1
+value = 2.0
+
+[node name="CTText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 426.0
+margin_right = 768.0
+margin_bottom = 457.0
+custom_fonts/font = SubResource( 2 )
+text = "0.00"
+
+[node name="O" type="Label" parent="SC/Grid"]
+margin_top = 477.0
+margin_right = 322.0
+margin_bottom = 508.0
+custom_fonts/font = SubResource( 2 )
+text = "Crosshair outline"
+
+[node name="COSlider" type="HSlider" parent="SC/Grid"]
+margin_left = 342.0
+margin_top = 477.0
+margin_right = 672.0
+margin_bottom = 493.0
+size_flags_horizontal = 3
+max_value = 3.0
+step = 0.1
+value = 1.0
+
+[node name="COText" type="Label" parent="SC/Grid"]
+margin_left = 692.0
+margin_top = 477.0
+margin_right = 768.0
+margin_bottom = 508.0
+custom_fonts/font = SubResource( 2 )
+text = "0.00"
+
+[node name="Back" type="Control" parent="."]
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.1
+anchor_bottom = 0.9
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="Back"]
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.6
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+color = Color( 0.866667, 0.866667, 0.866667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" parent="Crosshair" instance=ExtResource( 2 )]
+anchor_bottom = 0.5
+
+[node name="Crosshair2" parent="Crosshair" instance=ExtResource( 2 )]
+anchor_top = 0.5
+
+[node name="Keybind" type="Control" parent="."]
+anchor_left = 0.7
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.5
+
+[node name="Label" type="Label" parent="Keybind"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_constants/line_spacing = 10
+text = "Keybind:
+Fire: Left button
+Menu: M or Esc
+Reset: R"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://LightningGun.gd" type="Script" id=2]
+[ext_resource path="res://Crosshair.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Railgun.gd" type="Script" id=4]
+[ext_resource path="res://LineChart.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+height = 7.0
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -3.5, 0 )
+shape = SubResource( 1 )
+
+[node name="RotationHelper" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="RotationHelper"]
+far = 1000.0
+
+[node name="LightningGun" type="Spatial" parent="RotationHelper"]
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="RotationHelper/LightningGun"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="Railgun" type="Spatial" parent="RotationHelper"]
+script = ExtResource( 4 )
+
+[node name="RayCast" type="RayCast" parent="RotationHelper/Railgun"]
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="HUD" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crosshair" parent="HUD" instance=ExtResource( 3 )]
+
+[node name="SpeedChart" parent="." instance=ExtResource( 5 )]
